@@ -1,8 +1,11 @@
 import { Fragment } from "react"
 import Image from "next/image"
-import { ConnectButton } from "@rainbow-me/rainbowkit"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
+
+function ConnectButton() {
+  return <button>YAAY</button>
+}
 
 export default function Home() {
   return (
