@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useAccount, useBalance, useContractRead } from "wagmi"
+import { useAccount, useBalance, useConnect, useContractRead } from "wagmi"
 
 export type UseContractReadReturn = ReturnType<typeof useContractRead>
 
@@ -21,15 +21,29 @@ export const useAccountBalance = (token?: string) => {
 }
 
 export const useConnectedAccount = () => {
-  const [isConnected, setIsConnected] = useState(false)
-  const { address } = useAccount()
+  const { address: wagmiAddress } = useAccount()
+  const [address, setAddress] = useState("")
 
   useEffect(() => {
-    setIsConnected((address?.length || 0) > 1)
-  }, [address])
+    setAddress(wagmiAddress || "")
+  }, [wagmiAddress])
 
   return {
-    isConnected,
+    isConnected: address.length > 1,
     address,
+  }
+}
+
+export const useConnectMetamask = () => {
+  const { connect: wagmiConnect, connectors } = useConnect()
+
+  function connect() {
+    wagmiConnect({
+      connector: connectors?.[0], // Metamask Connector
+    })
+  }
+
+  return {
+    connect,
   }
 }
