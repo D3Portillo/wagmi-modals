@@ -12,6 +12,7 @@ module.exports = {
         kakao: {
           purple: "#8312F5",
           blue: "#3b82f6",
+          whiter: "#f3f5fc",
         },
       },
       backgroundImage: {

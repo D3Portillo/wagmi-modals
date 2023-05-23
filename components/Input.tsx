@@ -11,7 +11,7 @@ function Input(props: InputProps) {
     <input
       {...props}
       className={classnames(
-        "bg-blue-200 border border-blue-50 bg-opacity-10 py-3 px-4 focus:outline-none w-full rounded-lg",
+        "bg-transparent focus:outline-none w-full",
         props.className
       )}
     />

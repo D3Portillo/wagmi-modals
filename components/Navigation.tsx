@@ -1,12 +1,13 @@
 import Image from "next/image"
 
-import asset_logo from "@/assets/logo.svg"
 import Link from "next/link"
 import Button from "./Button"
 
-function Navigation() {
+import asset_logo from "@/assets/logo.svg"
+
+function Navigation({ className }: { className?: string }) {
   return (
-    <nav className="flex items-center gap-8">
+    <nav className={`flex items-center gap-8 ${className}`}>
       <Link href="/">
         <figure className="relative w-10 h-10">
           <Image
@@ -21,8 +22,8 @@ function Navigation() {
       <div className="flex-grow" />
 
       <Link
-        className="text-sm font-semibold hover:underline underline-offset-[6px] decoration-kakao-blue/40"
-        href="/"
+        className="text-sm font-semibold hover:opacity-70"
+        href="https://buy.moonpay.com/"
         target="_blank"
       >
         Buy Crypto

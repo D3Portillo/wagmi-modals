@@ -25,7 +25,7 @@ function Button({
         className,
         className?.includes("py-") || "py-3",
         className?.includes("px-") || "px-16",
-        "filter text-center hover:contrast-[1.15] shadow-xl rounded-lg font-semibold border-opacity-20",
+        "filter text-center hover:contrast-[1.15] shadow-xl rounded-xl font-semibold border-opacity-20",
         type === "blue" && "bg-kakao-blue text-white",
         type === "gradient-blue" && "bg-gradient-kakao text-white",
         props.disabled &&
