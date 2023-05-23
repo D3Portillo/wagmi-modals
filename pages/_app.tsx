@@ -7,7 +7,8 @@ import { polygon } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
 
 import { Toaster } from "react-hot-toast"
-import { InjectedConnector } from "wagmi/connectors/injected"
+import { MetaMaskConnector } from "wagmi/connectors/metaMask"
+
 import MainLayout from "@/components/MainLayout"
 
 const { provider, chains } = configureChains([polygon], [publicProvider()])
@@ -15,19 +16,19 @@ const { provider, chains } = configureChains([polygon], [publicProvider()])
 const client = createClient({
   autoConnect: true,
   provider,
-  connectors: [new InjectedConnector({ chains })],
+  connectors: [new MetaMaskConnector({ chains })],
 })
 
 const nextFont = Inter({ weight: ["400", "500", "600", "700"], subsets: [] })
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={nextFont.className}>
-      <MainLayout>
-        <Toaster />
-        <WagmiConfig client={client}>
+      <Toaster />
+      <WagmiConfig client={client}>
+        <MainLayout>
           <Component {...pageProps} />
-        </WagmiConfig>
-      </MainLayout>
+        </MainLayout>
+      </WagmiConfig>
     </main>
   )
 }
