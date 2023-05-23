@@ -1,13 +1,22 @@
 import { FiArrowDown } from "react-icons/fi"
+import { useMaticBalance } from "@/lib/matic"
+import { prettifyNumber } from "@/lib/numbers"
 
 import Input from "@/components/Input"
 import ModalTrigger from "@/components/Modal/ModalTrigger"
 import ModalConfirmSwap from "@/components/Modal/ModalConfirmSwap"
 
 function Swap() {
+  const { data } = useMaticBalance()
+
   return (
     <section className="bg-white rounded-2xl flex flex-col gap-2 p-4 border border-black/5 shadow-lg shadow-black/5 max-w-md mx-auto">
-      <h2>Swap</h2>
+      <nav className="flex items-center justify-between">
+        <h2>Swap</h2>
+        <p className="text-sm">
+          Wallet ― {prettifyNumber(Number(data?.formatted || 0))} MATIC
+        </p>
+      </nav>
 
       <TokenInput />
 
