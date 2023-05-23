@@ -1,19 +1,12 @@
 import Image from "next/image"
-import { useConnect } from "wagmi"
-
 import Link from "next/link"
-import Button from "./Button"
 
+import { useConnectMetamask } from "@/lib/wagmi"
+import Button from "./Button"
 import asset_logo from "@/assets/logo.svg"
 
 function Navigation({ className }: { className?: string }) {
-  const { connect, connectors } = useConnect()
-
-  function handleConnect() {
-    connect({
-      connector: connectors?.[0], // Metamask Connector
-    })
-  }
+  const { connect } = useConnectMetamask()
 
   return (
     <nav className={`flex items-center gap-8 ${className}`}>
@@ -38,11 +31,7 @@ function Navigation({ className }: { className?: string }) {
         Buy Crypto
       </Link>
 
-      <Button
-        onClick={handleConnect}
-        className="px-8 py-2"
-        type="gradient-blue"
-      >
+      <Button onClick={connect} className="px-8 py-2" type="gradient-blue">
         Connect
       </Button>
     </nav>

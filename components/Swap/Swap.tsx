@@ -1,12 +1,13 @@
 import { FiArrowDown } from "react-icons/fi"
 
 import Input from "@/components/Input"
-import Button from "@/components/Button"
+import ModalTrigger from "@/components/Modal/ModalTrigger"
+import ModalConfirmSwap from "@/components/Modal/ModalConfirmSwap"
 
 function Swap() {
   return (
     <section className="bg-white rounded-2xl flex flex-col gap-2 p-4 border border-black/5 shadow-lg shadow-black/5 max-w-md mx-auto">
-      <h2 className="font-semibold pb-2">Swap</h2>
+      <h2>Swap</h2>
 
       <TokenInput />
 
@@ -18,7 +19,9 @@ function Swap() {
 
       <TokenInput />
 
-      <Button className="text-lg">Swap Assets</Button>
+      <ModalTrigger opens={ModalConfirmSwap} className="text-lg">
+        Swap Assets
+      </ModalTrigger>
     </section>
   )
 }
