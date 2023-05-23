@@ -23,7 +23,7 @@ function Navigation({ className }: { className?: string }) {
       <div className="flex-grow" />
 
       <Link
-        className="text-sm whitespace-nowrap font-semibold hover:opacity-70"
+        className="hidden sm:inline text-sm whitespace-nowrap font-semibold hover:opacity-70"
         href="https://buy.moonpay.com/"
         target="_blank"
       >

@@ -7,6 +7,7 @@ export default function Home() {
     <Fragment>
       <SeoTags />
       <Swap />
+      <footer className="mt-32" />
     </Fragment>
   )
 }
