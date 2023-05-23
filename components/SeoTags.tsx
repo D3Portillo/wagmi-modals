@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo"
 const BASE_URL = "https://kakao.finance"
 const TWITTER_HANDLE = "d3portillo"
 export const DEFAULT_SEO = {
-  title: "Kakao Finance 💰",
+  title: "Kakao Finance",
   url: BASE_URL,
   imageURL: `${BASE_URL}/seo.png`,
   description:
