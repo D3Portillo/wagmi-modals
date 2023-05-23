@@ -1,7 +1,9 @@
+import { Fragment } from "react"
 import Modal, { type ModalProps } from "./Modal"
-import Button from "@/components/Button"
+
 import { useConnectedAccount, useConnectMetamask } from "@/lib/wagmi"
-import { Fragment, PropsWithChildren } from "react"
+import Button from "@/components/Button"
+import Badge from "../Badge"
 
 function ModalConfirmSwap(props: ModalProps) {
   const { isConnected } = useConnectedAccount()
@@ -18,18 +20,10 @@ function Confirm() {
       <p>
         Confirm to swap <Badge>1 $ETH</Badge> for <Badge>32 $ONYX</Badge>
       </p>
-      <Button onClick={() => alert("Confirm")} className="w-full text-lg mt-4">
+      <Button onClick={() => alert("Confirm")} className="w-full text-lg mt-6">
         Confirm
       </Button>
     </Fragment>
-  )
-}
-
-function Badge({ children }: PropsWithChildren) {
-  return (
-    <span className="py-1 rounded-full text-[85%] px-2 bg-kakao-blue/5 text-kakao-blue">
-      {children}
-    </span>
   )
 }
 
@@ -40,7 +34,7 @@ function ConnectContent() {
     <Fragment>
       <h2>Not Connected</h2>
       <p>Connect your wallet to continue.</p>
-      <Button onClick={connect} className="w-full text-lg mt-4">
+      <Button onClick={connect} className="w-full text-lg mt-6">
         Connect Wallet
       </Button>
     </Fragment>
