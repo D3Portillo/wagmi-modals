@@ -11,7 +11,7 @@ function Button({
   ...props
 }: PropsWithChildrenCx<
   HTMLProps<HTMLButtonElement> & {
-    type?: "blue" | "outlined"
+    type?: "blue" | "gradient-blue"
     href?: string
     asLink?: boolean
     target?: "_blank"
@@ -25,8 +25,9 @@ function Button({
         className,
         className?.includes("py-") || "py-3",
         className?.includes("px-") || "px-16",
-        "filter text-center hover:contrast-[1.15] text-lg shadow-xl rounded-lg font-semibold border-opacity-20",
-        type === "blue" && "bg-blue-500 text-white",
+        "filter text-center hover:contrast-[1.15] shadow-xl rounded-lg font-semibold border-opacity-20",
+        type === "blue" && "bg-kakao-blue text-white",
+        type === "gradient-blue" && "bg-gradient-kakao text-white",
         props.disabled &&
           "cursor-not-allowed grayscale text-opacity-50 hover:contrast-100"
       )}
