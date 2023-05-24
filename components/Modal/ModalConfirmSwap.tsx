@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import Modal, { type ModalProps } from "./Modal"
 
 import { useConnectedAccount, useConnectMetamask } from "@/lib/wagmi"
+import { useAtomSwapor } from "@/lib/jotai"
 import Button from "@/components/Button"
 import Badge from "../Badge"
 
@@ -14,6 +15,8 @@ function ModalConfirmSwap(props: ModalProps) {
 }
 
 function Confirm() {
+  const [swapor] = useAtomSwapor()
+
   return (
     <Fragment>
       <h2>Confirm Swap</h2>
@@ -23,7 +26,7 @@ function Confirm() {
       <Button
         asLink
         target="_blank"
-        href="https://app.1inch.io/#/137/simple/swap/MATIC/DAI"
+        href={`https://app.1inch.io/#/137/simple/swap/${swapor.from.symbol}/${swapor.to.symbol}`}
         className="block w-full text-lg mt-6"
       >
         Confirm
