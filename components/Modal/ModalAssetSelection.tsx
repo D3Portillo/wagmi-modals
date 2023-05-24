@@ -8,9 +8,9 @@ function ModalAssetSelection(props: ModalProps) {
       <h2 className="mb-4">Select a token</h2>
       {TOKEN_LIST.map((token) => {
         return (
-          <section
+          <button
             key={`token-${token.address}`}
-            className="flex items-center py-2 gap-4"
+            className="w-full hover:bg-gradient-to-r from-white via-kakao-blue/5 to-kakao-blue/[0.01] flex text-left items-center py-2 gap-4"
           >
             <figure className="w-8 h-8 relative rounded-full border border-black/5">
               <Image
@@ -20,14 +20,14 @@ function ModalAssetSelection(props: ModalProps) {
                 alt=""
               />
             </figure>
-            <div className="flex flex-col -space-y-1">
-              <h3 className="text-sm font-semibold">{token.name}</h3>
-              <p className="text-xs">{token.symbol}</p>
+            <div className="flex text-sm flex-col -space-y-0.5">
+              <h3 className="font-semibold">{token.name}</h3>
+              <p>{token.symbol}</p>
             </div>
             <div className="flex-grow text-right text-sm text-black/40">
               0 {token.symbol}
             </div>
-          </section>
+          </button>
         )
       })}
     </Modal>
