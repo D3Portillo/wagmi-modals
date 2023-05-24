@@ -20,7 +20,12 @@ function Confirm() {
       <p>
         Confirm to swap <Badge>1 $ETH</Badge> for <Badge>32 $ONYX</Badge>
       </p>
-      <Button onClick={() => alert("Confirm")} className="w-full text-lg mt-6">
+      <Button
+        asLink
+        target="_blank"
+        href="https://app.1inch.io/#/137/simple/swap/MATIC/DAI"
+        className="block w-full text-lg mt-6"
+      >
         Confirm
       </Button>
     </Fragment>
