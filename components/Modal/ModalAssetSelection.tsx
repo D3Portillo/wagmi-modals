@@ -1,16 +1,38 @@
+import type { Token } from "@/types/shared"
 import Image from "next/image"
 import TOKEN_LIST from "@/lib/tokenList"
+import { useAtomSwapor } from "@/lib/jotai"
 import Modal, { type ModalProps } from "./Modal"
 
-function ModalAssetSelection(props: ModalProps) {
+function ModalAssetSelection({
+  direction,
+  ...modalProps
+}: ModalProps & { direction: "from" | "to" }) {
+  const [swapor, setSwapor] = useAtomSwapor()
+
+  function handleSelectToken(token: Token) {
+    modalProps.onClose()
+    setSwapor((state) => ({
+      ...state,
+      [direction]: token,
+    }))
+  }
+
   return (
-    <Modal {...props}>
+    <Modal {...modalProps}>
       <h2 className="mb-4">Select a token</h2>
       {TOKEN_LIST.map((token) => {
+        const isSelected = [swapor.from.address, swapor.to.address].includes(
+          token.address
+        )
+
         return (
           <button
+            onClick={() => handleSelectToken(token)}
             key={`token-${token.address}`}
-            className="w-full hover:bg-gradient-to-r from-white via-kakao-blue/5 to-kakao-blue/[0.01] flex text-left items-center py-2 gap-4"
+            className={`w-full hover:bg-gradient-to-r from-white via-kakao-blue/5 to-kakao-blue/[0.01] flex text-left items-center py-2 gap-4 ${
+              isSelected && "opacity-60"
+            }`}
           >
             <figure className="w-8 h-8 relative rounded-full border border-black/5">
               <Image
