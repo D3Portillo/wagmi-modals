@@ -4,6 +4,7 @@ import Image from "next/image"
 
 import { useAccountBalance } from "@/lib/wagmi"
 import { prettifyNumber } from "@/lib/numbers"
+import { useTokenPrice } from "@/lib/swr"
 
 import { IoIosArrowDown } from "react-icons/io"
 import Input from "@/components/Input"
@@ -17,12 +18,18 @@ function TokenInput({
   token: Token
   direction: "from" | "to"
 }) {
+  const { data: price } = useTokenPrice(token.address)
   const { data: balance } = useAccountBalance(token.address)
 
   const ModalWithDirection = useCallback(
     (props: any) => <ModalAssetSelection {...props} direction={direction} />,
     [token.address]
   )
+
+  const PRICE = Number(price?.priceUSD || 0)
+  const BALANCE = Number(balance?.formatted || 0)
+
+  console.debug({ price: PRICE, balance: BALANCE, symbol: token.symbol })
 
   return (
     <fieldset className="bg-kakao-blue/[0.03] p-4 rounded-xl border">
@@ -50,8 +57,8 @@ function TokenInput({
       </div>
 
       <div className="flex items-center justify-between text-sm text-black/50">
-        <span>$ 23.02</span>
-        <span>Balance: {prettifyNumber(Number(balance?.formatted || 0))}</span>
+        <span>$ {prettifyNumber(PRICE * BALANCE)}</span>
+        <span>Balance: {prettifyNumber(BALANCE)}</span>
       </div>
     </fieldset>
   )

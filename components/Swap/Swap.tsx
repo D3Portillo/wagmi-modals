@@ -3,10 +3,10 @@ import { useMaticBalance } from "@/lib/matic"
 import { prettifyNumber } from "@/lib/numbers"
 
 import { useAtomSwapor } from "@/lib/jotai"
+import { MdOutlineWallet } from "react-icons/md"
 import ModalTrigger from "@/components/Modal/ModalTrigger"
 import ModalConfirmSwap from "@/components/Modal/ModalConfirmSwap"
 import TokenInput from "./TokenInput"
-import { MdOutlineWallet } from "react-icons/md"
 
 function Swap() {
   const [swapor, setSwapor] = useAtomSwapor()
