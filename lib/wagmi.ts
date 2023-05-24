@@ -19,7 +19,7 @@ export const useAccountBalance = (token?: string) => {
   const { address } = useAccount()
   return useBalance({
     address,
-    cacheTime: 20_000,
+    keepPreviousData: true,
     scopeKey: `useAccountBalance.${token}`,
     watch: true,
     token: token as any,

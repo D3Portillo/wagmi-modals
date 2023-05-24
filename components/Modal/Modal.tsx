@@ -6,11 +6,12 @@ import { IoClose } from "react-icons/io5"
 export type ModalProps = PropsWithChildren<{
   isOpen: boolean
   onClose: () => void
+  unmount?: boolean
 }>
 
-function Modal({ children, isOpen, onClose }: ModalProps) {
+function Modal({ children, isOpen, onClose, unmount }: ModalProps) {
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition unmount={unmount} appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
           as={Fragment}
