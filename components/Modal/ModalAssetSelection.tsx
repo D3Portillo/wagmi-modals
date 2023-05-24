@@ -32,7 +32,7 @@ function ModalAssetSelection({
           <AssetRow
             onClick={() => handleSelectToken(token)}
             key={`token-${token.address}`}
-            className={isSelected && "opacity-60"}
+            className={isSelected && "opacity-60 blur-[0.3px]"}
             token={token}
           />
         )

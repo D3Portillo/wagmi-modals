@@ -15,18 +15,19 @@ function ModalConfirmSwap(props: ModalProps) {
 }
 
 function Confirm() {
-  const [swapor] = useAtomSwapor()
+  const [{ from, to }] = useAtomSwapor()
 
   return (
     <Fragment>
       <h2>Confirm Swap</h2>
       <p>
-        Confirm to swap <Badge>1 $ETH</Badge> for <Badge>32 $ONYX</Badge>
+        Confirm to swap <Badge>1 ${from.symbol}</Badge> for{" "}
+        <Badge>32 ${to.symbol}</Badge>
       </p>
       <Button
         asLink
         target="_blank"
-        href={`https://app.1inch.io/#/137/simple/swap/${swapor.from.symbol}/${swapor.to.symbol}`}
+        href={`https://app.1inch.io/#/137/simple/swap/${from.symbol}/${to.symbol}`}
         className="block w-full text-lg mt-6"
       >
         Confirm
