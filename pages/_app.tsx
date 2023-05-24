@@ -12,7 +12,9 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask"
 
 import MainLayout from "@/components/MainLayout"
 
-const { provider, chains } = configureChains([polygon], [publicProvider()])
+const { provider, chains } = configureChains([polygon], [publicProvider()], {
+  pollingInterval: 15_000,
+})
 
 const client = createClient({
   autoConnect: true,

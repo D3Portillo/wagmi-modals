@@ -17,7 +17,13 @@ export const withFormatted = <T, Formatted>(
 
 export const useAccountBalance = (token?: string) => {
   const { address } = useAccount()
-  return useBalance({ address, watch: true, token: token as any })
+  return useBalance({
+    address,
+    cacheTime: 20_000,
+    scopeKey: `useAccountBalance.${token}`,
+    watch: true,
+    token: token as any,
+  })
 }
 
 export const useConnectedAccount = () => {
