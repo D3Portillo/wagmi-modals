@@ -1,10 +1,14 @@
+import Image from "next/image"
 import { FiArrowDown } from "react-icons/fi"
+import { IoIosArrowDown } from "react-icons/io"
 import { useMaticBalance } from "@/lib/matic"
 import { prettifyNumber } from "@/lib/numbers"
 
 import Input from "@/components/Input"
 import ModalTrigger from "@/components/Modal/ModalTrigger"
 import ModalConfirmSwap from "@/components/Modal/ModalConfirmSwap"
+import ModalAssetSelection from "@/components/Modal/ModalAssetSelection"
+import asset_token_eth from "@/assets/tokens/eth.png"
 
 function Swap() {
   const { data } = useMaticBalance()
@@ -40,6 +44,25 @@ function TokenInput() {
     <fieldset className="bg-kakao-blue/[0.03] p-4 rounded-xl border">
       <div className="flex items-center text-2xl mb-2">
         <Input placeholder="0" />
+        <ModalTrigger opens={ModalAssetSelection}>
+          {({ open }) => (
+            <button
+              onClick={open}
+              className="flex gap-1 text-base items-center bg-kakao-blue/10 border border-transparent hover:border-kakao-purple/10 px-2 py-1 rounded-full"
+            >
+              <figure className="w-5 h-5 relative">
+                <Image
+                  fill
+                  className="object-contain"
+                  src={asset_token_eth}
+                  alt=""
+                />
+              </figure>
+              <strong className="font-semibold pl-1">ETH</strong>
+              <IoIosArrowDown />
+            </button>
+          )}
+        </ModalTrigger>
       </div>
 
       <div className="flex items-center justify-between text-sm text-black/50">
