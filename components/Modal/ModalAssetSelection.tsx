@@ -10,7 +10,7 @@ function ModalAssetSelection({
   direction,
   ...modalProps
 }: ModalProps & { direction: "from" | "to" }) {
-  const [swapor, setSwapor] = useAtomSwapor()
+  const [{ from, to }, setSwapor] = useAtomSwapor()
 
   function handleSelectToken(token: Token) {
     modalProps.onClose()
@@ -24,10 +24,7 @@ function ModalAssetSelection({
     <Modal unmount {...modalProps}>
       <h2 className="mb-4">Select a token</h2>
       {TOKEN_LIST.map((token) => {
-        const isSelected = [swapor.from.address, swapor.to.address].includes(
-          token.address
-        )
-
+        const isSelected = [from.address, to.address].includes(token.address)
         return (
           <AssetRow
             onClick={() => handleSelectToken(token)}
